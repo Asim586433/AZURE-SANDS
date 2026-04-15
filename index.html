@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure Sands Resort | Official Site | Luxury Tulum Hotel</title>
+    
+    <!-- SEO & Meta Tags -->
+    <meta name="description" content="Book direct at Azure Sands Resort Tulum for the best rates. Luxury suites, private pools, and world-class dining. Experience the pinnacle of Mayan Riviera hospitality.">
+    <link rel="canonical" href="https://azuresandstulum.com">
+    
+    <!-- External Assets -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap');
+        
+        :root { --primary: #0f172a; --accent: #b45309; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        h1, h2, h3, .font-serif { font-family: 'Playfair Display', serif; }
+        
+        .page-fade-in { animation: fadeIn 0.4s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .hotel-bg { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=2000&auto=format&fit=crop'); background-attachment: fixed; background-size: cover; }
+    </style>
+</head>
+<body x-data="{ 
+    page: 'home', 
+    showDash: false, 
+    bookingStep: 0,
+    checkIn: '',
+    checkOut: '',
+    guests: 2,
+    loading: false,
+    confirmBooking() {
+        this.loading = true;
+        setTimeout(() => { 
+            this.loading = false; 
+            this.bookingStep = 2; 
+            console.log('GA4 Event: purchase', { value: 450, currency: 'USD' });
+        }, 1500);
+    }
+}" class="bg-white text-slate-900">
+
+    <!-- AGENCY OVERLAY TOOLBAR -->
+    <nav class="bg-slate-900 text-white px-4 py-2 flex justify-between items-center sticky top-0 z-[100] border-b border-slate-700">
+        <div class="flex items-center gap-2">
+            <div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+            <span class="text-[10px] font-mono uppercase tracking-tighter">Live Webflow-WP Hybrid Engine</span>
+        </div>
+        <div class="flex gap-4">
+            <button @click="showDash = !showDash" class="bg-amber-600 hover:bg-amber-500 text-[10px] font-bold px-3 py-1 rounded transition uppercase">
+                Agency Dashboard
+            </button>
+        </div>
+    </nav>
+
+    <!-- MAIN NAVIGATION -->
+    <header class="bg-white/90 backdrop-blur-md border-b sticky top-[41px] z-50 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div @click="page = 'home'" class="text-2xl font-bold tracking-tighter cursor-pointer flex items-center gap-2">
+                <i data-lucide="waves" class="text-amber-600"></i> AZURE SANDS
+            </div>
+            <nav class="hidden md:flex gap-8 text-sm font-semibold uppercase tracking-widest">
+                <a @click="page = 'home'" class="cursor-pointer hover:text-amber-600 transition" :class="page === 'home' ? 'text-amber-600 border-b-2 border-amber-600' : ''">Home</a>
+                <a @click="page = 'suites'" class="cursor-pointer hover:text-amber-600 transition" :class="page === 'suites' ? 'text-amber-600 border-b-2 border-amber-600' : ''">Suites</a>
+                <a @click="page = 'dining'" class="cursor-pointer hover:text-amber-600 transition" :class="page === 'dining' ? 'text-amber-600 border-b-2 border-amber-600' : ''">Dining</a>
+                <a @click="page = 'gallery'" class="cursor-pointer hover:text-amber-600 transition" :class="page === 'gallery' ? 'text-amber-600 border-b-2 border-amber-600' : ''">Gallery</a>
+            </nav>
+            <button @click="page = 'suites'; document.getElementById('book-section').scrollIntoView();" class="bg-slate-900 text-white px-5 py-2 text-xs font-bold uppercase hover:bg-amber-700 transition">
+                Book Now
+            </button>
+        </div>
+    </header>
+
+    <!-- CONTENT ROUTER -->
+    <main>
+        
+        <!-- PAGE: HOME -->
+        <template x-if="page === 'home'">
+            <div class="page-fade-in">
+                <!-- Hero -->
+                <section class="h-[80vh] hotel-bg flex items-center justify-center text-center text-white px-4">
+                    <div class="max-w-3xl">
+                        <span class="uppercase tracking-[0.3em] text-sm mb-4 block">Boutique Luxury in Tulum</span>
+                        <h1 class="text-5xl md:text-8xl mb-6">Reconnect with the Elements.</h1>
+                        <p class="text-lg md:text-xl font-light mb-8">Save 15% on all direct bookings this summer season.</p>
+                        <div class="flex flex-col md:flex-row gap-4 justify-center">
+                            <button @click="page = 'suites'" class="bg-white text-slate-900 px-8 py-4 font-bold uppercase hover:bg-amber-500 hover:text-white transition">View The Suites</button>
+                            <button class="border border-white px-8 py-4 font-bold uppercase hover:bg-white hover:text-slate-900 transition">Virtual Tour</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Stats/Trust Section -->
+                <section class="py-12 bg-slate-50 border-b">
+                    <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                        <div>
+                            <p class="text-3xl font-serif text-amber-700">4.9/5</p>
+                            <p class="text-xs text-slate-500 uppercase font-bold">Guest Rating</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-serif text-amber-700">120ft</p>
+                            <p class="text-xs text-slate-500 uppercase font-bold">Private Beach</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-serif text-amber-700">0%</p>
+                            <p class="text-xs text-slate-500 uppercase font-bold">Booking Fees</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-serif text-amber-700">24/7</p>
+                            <p class="text-xs text-slate-500 uppercase font-bold">VIP Concierge</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </template>
+
+        <!-- PAGE: SUITES (The Booking Engine Page) -->
+        <template x-if="page === 'suites'">
+            <div class="page-fade-in py-16 px-6 max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl mb-4">Our Sanctuaries</h2>
+                    <p class="text-slate-500">Every room is designed to merge indoor comfort with the raw beauty of Tulum.</p>
+                </div>
+
+                <!-- Booking Engine UI -->
+                <div id="book-section" class="bg-slate-900 p-8 rounded-xl shadow-2xl mb-16 text-white">
+                    <div x-show="bookingStep === 0" class="grid md:grid-cols-4 gap-6">
+                        <div>
+                            <label class="block text-[10px] uppercase font-bold mb-2 text-amber-500">Arrival</label>
+                            <input type="date" x-model="checkIn" class="w-full bg-slate-800 border-none p-3 rounded">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] uppercase font-bold mb-2 text-amber-500">Departure</label>
+                            <input type="date" x-model="checkOut" class="w-full bg-slate-800 border-none p-3 rounded">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] uppercase font-bold mb-2 text-amber-500">Guests</label>
+                            <select x-model="guests" class="w-full bg-slate-800 border-none p-3 rounded">
+                                <option>1 Guest</option>
+                                <option selected>2 Guests</option>
+                                <option>3 Guests</option>
+                                <option>4 Guests</option>
+                            </select>
+                        </div>
+                        <button @click="bookingStep = 1" class="bg-amber-600 hover:bg-amber-500 py-3 font-bold uppercase transition self-end rounded">Check Rates</button>
+                    </div>
+
+                    <!-- Step 1: Select Room -->
+                    <div x-show="bookingStep === 1" class="page-fade-in">
+                        <div class="flex justify-between items-center mb-6 border-b border-slate-700 pb-4">
+                            <h3 class="text-xl">Available for your dates</h3>
+                            <button @click="bookingStep = 0" class="text-xs text-slate-400 underline">Change Dates</button>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="bg-slate-800 p-6 rounded-lg flex flex-col md:flex-row justify-between items-center gap-6">
+                                <div class="flex gap-6 items-center">
+                                    <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&q=80&w=200" class="w-24 h-24 rounded object-cover">
+                                    <div>
+                                        <h4 class="text-xl font-serif">Oceanfront King Suite</h4>
+                                        <p class="text-xs text-slate-400">All-inclusive • Private Balcony • King Bed</p>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-2xl font-bold">$450 <span class="text-xs font-normal">/night</span></p>
+                                    <button @click="confirmBooking()" class="mt-2 bg-white text-slate-900 px-6 py-2 font-bold uppercase text-xs">
+                                        <span x-show="!loading">Reserve Room</span>
+                                        <span x-show="loading">Processing...</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Confirmation -->
+                    <div x-show="bookingStep === 2" class="page-fade-in text-center py-10">
+                        <div class="w-16 h-16 bg-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6 text-white">
+                            <i data-lucide="check"></i>
+                        </div>
+                        <h3 class="text-3xl font-serif mb-2">Your escape is booked!</h3>
+                        <p class="text-slate-400 mb-6">Confirmation #AZ-99281 has been sent to your email.</p>
+                        <button @click="bookingStep = 0; page = 'home'" class="text-amber-500 font-bold uppercase text-xs tracking-widest">Return Home</button>
+                    </div>
+                </div>
+
+                <!-- Regular Room Cards (Content) -->
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="group border rounded-xl overflow-hidden">
+                        <div class="h-80 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&q=80&w=1000" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl mb-2">Jungle Loft</h3>
+                            <p class="text-slate-500 text-sm mb-6">Elevated living among the palms. Features an outdoor rainfall shower and organic linen bedding.</p>
+                            <ul class="text-xs space-y-2 mb-8 text-slate-600 font-semibold">
+                                <li class="flex items-center gap-2"><i data-lucide="wifi" class="w-3"></i> High Speed Fiber Internet</li>
+                                <li class="flex items-center gap-2"><i data-lucide="wind" class="w-3"></i> Eco-friendly A/C</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="group border rounded-xl overflow-hidden">
+                        <div class="h-80 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=1000" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl mb-2">Ocean Villa</h3>
+                            <p class="text-slate-500 text-sm mb-6">Steps from the Caribbean sea. Floor-to-ceiling windows and a private saltwater plunge pool.</p>
+                            <ul class="text-xs space-y-2 mb-8 text-slate-600 font-semibold">
+                                <li class="flex items-center gap-2"><i data-lucide="coffee" class="w-3"></i> Nespresso Reserve Bar</li>
+                                <li class="flex items-center gap-2"><i data-lucide="shield-check" class="w-3"></i> Private In-room Safety Box</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <!-- PAGE: DINING -->
+        <template x-if="page === 'dining'">
+            <div class="page-fade-in py-16 px-6 max-w-7xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <span class="text-amber-600 font-bold uppercase tracking-widest text-xs">Culinary Excellence</span>
+                        <h2 class="text-5xl mt-4 mb-6">Mestizo Kitchen</h2>
+                        <p class="text-slate-600 leading-relaxed mb-8">
+                            Our award-winning restaurant focuses on "Ancestral Fire" cooking techniques. Every ingredient is sourced within 50 miles of the resort, ensuring a carbon-neutral dining experience that honors Mayan traditions.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-slate-50 p-4 border-l-4 border-amber-600">
+                                <p class="font-bold">Breakfast</p>
+                                <p class="text-xs text-slate-500">7:00 AM - 11:00 AM</p>
+                            </div>
+                            <div class="bg-slate-50 p-4 border-l-4 border-amber-600">
+                                <p class="font-bold">Dinner</p>
+                                <p class="text-xs text-slate-500">6:00 PM - 11:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&q=80&w=600" class="rounded-lg shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=600" class="rounded-lg shadow-lg mt-12">
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <!-- PAGE: GALLERY -->
+        <template x-if="page === 'gallery'">
+            <div class="page-fade-in py-16 px-6 max-w-7xl mx-auto text-center">
+                <h2 class="text-4xl mb-12">Visual Serenity</h2>
+                <div class="columns-1 md:columns-3 gap-4 space-y-4">
+                    <img src="https://images.unsplash.com/photo-1544124499-58912cbddaad?auto=format&fit=crop&q=80&w=600" class="rounded-lg">
+                    <img src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&q=80&w=600" class="rounded-lg">
+                    <img src="https://images.unsplash.com/photo-1571011267864-21016b3b89b4?auto=format&fit=crop&q=80&w=600" class="rounded-lg">
+                    <img src="https://images.unsplash.com/photo-1610641818989-c2051b5e2cfd?auto=format&fit=crop&q=80&w=600" class="rounded-lg">
+                    <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&q=80&w=600" class="rounded-lg">
+                </div>
+            </div>
+        </template>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-white py-20 px-6 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-12">
+            <div class="col-span-1 md:col-span-2">
+                <div class="text-2xl font-bold tracking-tighter mb-6">AZURE SANDS</div>
+                <p class="text-slate-400 max-w-sm">A sanctuary for the mind, body, and soul. Nestled between the Mayan jungle and the Caribbean sea.</p>
+            </div>
+            <div>
+                <h4 class="font-bold uppercase text-xs tracking-widest mb-6">Explore</h4>
+                <ul class="text-slate-400 space-y-3 text-sm">
+                    <li><a @click="page = 'suites'" class="hover:text-amber-500 cursor-pointer">Suites</a></li>
+                    <li><a @click="page = 'dining'" class="hover:text-amber-500 cursor-pointer">Dining</a></li>
+                    <li><a @click="page = 'gallery'" class="hover:text-amber-500 cursor-pointer">Gallery</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold uppercase text-xs tracking-widest mb-6">Stay Connected</h4>
+                <div class="flex gap-4">
+                    <i data-lucide="instagram" class="w-5 h-5 cursor-pointer hover:text-amber-500"></i>
+                    <i data-lucide="facebook" class="w-5 h-5 cursor-pointer hover:text-amber-500"></i>
+                    <i data-lucide="twitter" class="w-5 h-5 cursor-pointer hover:text-amber-500"></i>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto mt-20 pt-8 border-t border-slate-800 text-[10px] text-slate-500 flex justify-between">
+            <p>&copy; 2024 Azure Sands Resort Tulum. All rights reserved.</p>
+            <p>Managed by AgencyAlpha • SEO & Performance Optimized</p>
+        </div>
+    </footer>
+
+    <!-- AGENCY DASHBOARD MODAL -->
+    <div x-show="showDash" x-transition class="fixed inset-0 bg-slate-900 z-[200] overflow-y-auto p-6 md:p-12">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex justify-between items-center mb-12 border-b border-slate-800 pb-8">
+                <div>
+                    <h2 class="text-3xl text-white font-serif">Management Console</h2>
+                    <p class="text-slate-500 text-sm">Real-time performance metrics for Azure Sands Resort</p>
+                </div>
+                <button @click="showDash = false" class="text-white bg-slate-800 px-6 py-2 rounded font-bold">Exit Dashboard</button>
+            </div>
+
+            <!-- KPI Cards -->
+            <div class="grid md:grid-cols-4 gap-6 mb-12 text-white">
+                <div class="bg-slate-800 p-6 rounded-xl">
+                    <p class="text-xs text-slate-400 uppercase mb-2">Web Vital Score</p>
+                    <p class="text-4xl text-emerald-500 font-bold">99/100</p>
+                    <p class="text-[10px] text-slate-500 mt-2">LCP: 0.8s | TBT: 120ms</p>
+                </div>
+                <div class="bg-slate-800 p-6 rounded-xl">
+                    <p class="text-xs text-slate-400 uppercase mb-2">Direct Bookings (MTD)</p>
+                    <p class="text-4xl text-amber-500 font-bold">142</p>
+                    <p class="text-[10px] text-emerald-500 mt-2">↑ 22% vs OTA</p>
+                </div>
+                <div class="bg-slate-800 p-6 rounded-xl">
+                    <p class="text-xs text-slate-400 uppercase mb-2">Conv. Rate</p>
+                    <p class="text-4xl text-blue-400 font-bold">4.2%</p>
+                    <p class="text-[10px] text-slate-500 mt-2">Benchmark: 2.1%</p>
+                </div>
+                <div class="bg-slate-800 p-6 rounded-xl">
+                    <p class="text-xs text-slate-400 uppercase mb-2">Est. Rev. Saved</p>
+                    <p class="text-4xl text-white font-bold">$12,405</p>
+                    <p class="text-[10px] text-slate-500 mt-2">OTA Commission Avoided</p>
+                </div>
+            </div>
+
+            <!-- Optimization Log -->
+            <div class="bg-slate-950 p-8 rounded-2xl border border-slate-800">
+                <h3 class="text-white mb-6 font-bold flex items-center gap-2 uppercase tracking-widest text-xs">
+                    <i data-lucide="terminal" class="w-4"></i> Deployment History & Optimization Log
+                </h3>
+                <div class="space-y-4 font-mono text-[11px] leading-relaxed">
+                    <div class="flex gap-4 border-l-2 border-emerald-500 pl-4 py-1">
+                        <span class="text-slate-500">[2024-05-10 14:02]</span>
+                        <span class="text-emerald-400">SUCCESS:</span>
+                        <span class="text-slate-300">All JPEG assets converted to .webp format. Bundle size reduced by 64%.</span>
+                    </div>
+                    <div class="flex gap-4 border-l-2 border-blue-500 pl-4 py-1">
+                        <span class="text-slate-500">[2024-05-09 09:15]</span>
+                        <span class="text-blue-400">SEO:</span>
+                        <span class="text-slate-300">JSON-LD Schema for "Hotel" validated. 0 errors in Google Search Console.</span>
+                    </div>
+                    <div class="flex gap-4 border-l-2 border-amber-500 pl-4 py-1">
+                        <span class="text-slate-500">[2024-05-08 18:45]</span>
+                        <span class="text-amber-400">CRO:</span>
+                        <span class="text-slate-300">A/B Test 'Floating CTA' vs 'Static Footer' concluded. Floating +18% lift.</span>
+                    </div>
+                    <div class="flex gap-4 border-l-2 border-slate-700 pl-4 py-1">
+                        <span class="text-slate-500">[2024-05-07 10:00]</span>
+                        <span class="text-slate-500">SYSTEM:</span>
+                        <span class="text-slate-300">Weekly server cache purge and database optimization completed.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Lucide Icons Initialization
+        lucide.createIcons();
+
+        // Simple Console Simulation for Portfolio
+        window.addEventListener('load', () => {
+            console.log("%c Agency Console Initialized ", "background: #0f172a; color: #fbbf24; padding: 5px; font-weight: bold;");
+            console.log("Status: Performance Optimizations Loaded (WP Rocket & Asset Cleanup simulated)");
+        });
+    </script>
+</body>
+</html>
